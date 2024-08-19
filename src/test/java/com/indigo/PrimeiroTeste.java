@@ -29,6 +29,48 @@ public class PrimeiroTeste {
         //execução
         calculadora.somar(num1, num2);
     }
+
+    //TODO: Implementar subtrair, multiplicar e dividir(não pode dividir por 0)
+
+    @Test
+    public void deveSubtrair2Numeros(){
+        //cenario
+        Calculadora calculadora = new Calculadora();
+        int numero1 = 10, numero2 = 5;
+
+        //execução
+        calculadora.subtrair(numero1, numero2);
+    }
+
+    @Test
+    public void deveMultiplicar2Numeros(){
+        //cenario
+        Calculadora calculadora = new Calculadora();
+        int numero1 = 10, numero2 = 5;
+
+        //execução
+        calculadora.multiplicar(numero1, numero2);
+    }
+
+    @Test
+    public void deveDividir2Numeros(){
+        //cenario
+        Calculadora calculadora = new Calculadora();
+        int numero1 = 10, numero2 = 5;
+
+        //execução
+        calculadora.dividir(numero1, numero2);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void naoDeveDividirNumerosCom0(){
+        //cenario
+        Calculadora calculadora = new Calculadora();
+        int numero1 = 10, numero2 = 0;
+
+        //execução
+        calculadora.dividir(numero1, numero2);
+    }
 }
 
 class Calculadora{
@@ -38,5 +80,22 @@ class Calculadora{
             throw new RuntimeException("Não é permitido somar numeros negativos.");
         }
         return num1 + num2;
+    }
+
+    int subtrair(int num1, int num2){
+        return num1 - num2;
+    }
+
+    int multiplicar(int num1, int num2){
+
+        return num1 * num2;
+    }
+
+    int dividir(int num1, int num2){
+        if(num1 == 0 || num2 == 0){
+            throw new RuntimeException("Não pode dividir um numero com 0.");
+        }
+        return num1 / num2;
+
     }
 }
